@@ -61,7 +61,18 @@ const Chatbot = () => {
   useEffect(scrollToBottom, [chatMessages]);
 
   const toggleChatbot = () => {
-    setIsActive(!isActive);
+    setIsActive((prevActive) => {
+      if (!prevActive && chatMessages.length === 0) {
+        // Add welcome message when chatbot is first activated
+        setChatMessages([
+          {
+            type: "bot",
+            content: "Hello! I'm NaviBot, your friendly healthcare AI assistant. How can I help you today?",
+          },
+        ]);
+      }
+      return !prevActive;
+    });
   };
 
   return (
