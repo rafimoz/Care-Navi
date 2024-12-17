@@ -10,7 +10,7 @@ import userRouter from './routes/userRoute.js'
 
 // App configuration
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 connectDB()
 connectCloudinary()
 
@@ -21,7 +21,6 @@ app.use(express.json());
 
 // api endpoint
 app.use('/api/admin', adminRouter)
-// localhost:5000/api/admin/add-doctor
 
 app.use('/api/doctor', doctorRouter)
 app.use('/api/user', userRouter)
